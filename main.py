@@ -14,11 +14,6 @@ class MyApp(QWidget):
         self.setWindowTitle('Points')
         self.show()
 
-    def paintEvent(self,e):
-        qp=QPainter()
-        qp.begin(self)
-        self.draw_Line(qp)
-        qp.end()
 
 
 
@@ -33,12 +28,12 @@ class MyApp(QWidget):
         self.draw_Line(event.x(), event.y())
 
     def draw_Line(self, x, y):
-        self.img = QPixmap("")
-        painter.setPen(QPen(Qt.black, 10, Qt.SolidLine))
-        painter.drawLine(400, 300, x, y)
-        painter.end()
-        self.screen.setPixmap(QtGui.QPixmap(self.img))
-        self.show()
+        self.img = QPixmap("HOME2.png")
+        qp = QPainter(self.img)
+        qp.begin(self)
+        qp.setPen(QPen(Qt.black, 10, Qt.SolidLine))
+        qp.drawLine(400, 300, x, y)
+        qp.end()
 
 
 

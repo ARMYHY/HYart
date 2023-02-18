@@ -1,7 +1,8 @@
+'''
 import sys
-from PyQt5.QtWidgets import QWidget, QApplication
-from PyQt5.QtGui import QPainter, QPen
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import*
+from PyQt5.QtGui import*
+from PyQt5.QtCore import*
 
 
 class MyApp(QWidget):
@@ -13,7 +14,9 @@ class MyApp(QWidget):
     def initUI(self):
         self.setWindowTitle('Points')
         self.show()
-
+        self.centralwidget = QWidget()
+        self.screen = QLabel(self.centralwidget)
+        self.screen.setPixmap(QPixmap("HOME.png"))
 
 
 
@@ -38,6 +41,36 @@ class MyApp(QWidget):
 
 
 
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = MyApp()
+    sys.exit(app.exec_())
+'''
+
+import sys
+from PyQt5.QtWidgets import*
+from PyQt5.QtGui import*
+from PyQt5.QtCore import*
+
+
+class MyApp(QMainWindow):
+
+
+
+
+    def __init__(self):
+        super().__init__()
+
+        self.status_bar = self.statusBar()
+        self.statusBar().showMessage('Ready')
+        self.show()
+
+
+
+    def mouseMoveEvent(self, event):
+        mouse_pt = "Mouse Point : x={0},y={0}".format(event.x(), event.y())
+        self.status_bar.showMessage(mouse_pt)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
